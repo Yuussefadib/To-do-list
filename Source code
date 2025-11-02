@@ -1,0 +1,61 @@
+class Todo_list:
+    def __init__(self):
+        self.tasks = []
+        self.completed = False
+    
+    def add(self):
+        task = input("insert a task: ")
+        self.tasks.append(task)
+        print(f"Task {task} Added Successfully.")
+    
+    def remove(self):
+        task = int(input("enter a task number to remove: "))
+        
+        if 1 <= task <= len(self.tasks):
+            
+            remove_task = self.tasks.pop(task - 1)
+            
+            print(f"{remove_task} removed!")
+        
+        else:
+            print("No task to remove")
+            
+    def display(self):
+        print("Your Tasks:")
+        for i, task in enumerate(self.tasks, start=1):
+            print(f"{i}- {task}")
+            
+    def mark(self):
+        task = int(input("enter the task number you want to mark as completed: "))
+        
+        if 1 <= task <= len(self.tasks):
+            print(f"{self.tasks[task - 1]} marked as completed!")
+            self.tasks.pop(task - 1)
+
+
+
+
+my_list = Todo_list()
+while True:
+    
+    
+    choice = int(input('''choose the following options:
+    1- Add tasks
+    2- remove task
+    3- display tasks
+    4- mark a task as completed
+    5- quit'''))
+    if choice == 1:
+        my_list.add()
+    elif choice == 2:
+        my_list.remove()
+    
+    elif choice == 3:
+        my_list.display()
+    elif choice == 4:
+        my_list.mark()
+    
+    else:
+        break
+
+    
